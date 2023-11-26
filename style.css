@@ -1,0 +1,199 @@
+/* Ini adalah stylesheet untuk halaman Memory Card Game */
+
+/* Import Google Font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Set tata letak dasar dan gaya font untuk seluruh halaman */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Gaya teks paragraf */
+p{
+  font-size: 20px;
+}
+
+/* Style untuk halaman utama */
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #8B33D0;
+}
+
+/* Warna saat teks dipilih */
+::selection{
+  color: #fff;
+  background: #8B33D0;
+}
+
+/* Gaya untuk wrapper */
+.wrapper{
+  padding: 25px;
+  background: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 25px 25px rgba(0, 0, 0, 0.87);
+}
+
+/* Gaya untuk judul h1 di tengah atas wrapper */
+.wrapper h1 {
+  text-align: center;
+  color: #333; /* Ganti warna judul sesuai keinginan */
+  margin-bottom: 20px;
+}
+
+/* Gaya untuk elemen-elemen di dalam wrapper */
+.cards, .card, .view, .details, p{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Gaya untuk kartu-kartu dalam permainan */
+.cards{
+  height: 350px;
+  width: 350px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.cards .card{
+  cursor: pointer;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  height: calc(100% / 4 - 10px);
+  width: calc(100% / 4 - 10px);
+}
+
+/* Efek animasi shake untuk kartu yang salah dipilih */
+.card.shake{
+  animation: shake 0.35s ease-in-out;
+}
+@keyframes shake {
+  0%, 100%{
+    transform: translateX(0);
+  }
+  20%{
+    transform: translateX(-13px);
+  }
+  40%{
+    transform: translateX(13px);
+  }
+  60%{
+    transform: translateX(-8px);
+  }
+  80%{
+    transform: translateX(8px);
+  }
+}
+.cards .card .view{
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  background: #fff;
+  border-radius: 7px;
+  backface-visibility: hidden;
+  transition: transform 0.25s linear;
+  box-shadow: 0 7px 15px rgba(0,0,0,0.1);
+}
+.card .front-view img{
+  max-width: 17px;
+}
+.card .back-view{
+  transform: rotateY(-180deg);
+}
+.card .back-view img{
+  max-width: 40px;
+}
+.card.flip .front-view{
+  transform: rotateY(180deg);
+}
+.card.flip .back-view{
+  transform: rotateY(0);
+}
+
+/* Gaya untuk bagian detail permainan di bawah kartu-kartu */
+.details{
+  width: 100%;
+  margin-top: 15px;
+  padding: 0 20px;
+  border-radius: 7px;
+  background: #fff;
+  height: calc(100% / 4 - 30px);
+  justify-content: space-between;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+.details p{
+  font-size: 18px;
+  height: 17px;
+  padding-right: 18px;
+  border-right: 1px solid #ccc;
+}
+.details p span{
+  margin-left: 8px;
+}
+.details p b{
+  font-weight: 500;
+}
+.details button{
+  cursor: pointer;
+  font-size: 14px;
+  color: #8B33D0;
+  border-radius: 4px;
+  padding: 4px 11px;
+  background: #fff;
+  border: 2px solid #8B33D0;
+  transition: 0.3s ease;
+}
+.details button:hover{
+  color: #fff;
+  background: #8B33D0;
+}
+
+/* Media queries agar website kita responsive */
+@media screen and (max-width: 700px) {
+  .cards{
+    height: 350px;
+    width: 350px;
+  }
+  .card .front-view img{
+    max-width: 16px;
+  }
+  .card .back-view img{
+    max-width: 40px;
+  }
+}
+
+/* Media queries agar website kita responsive */
+@media screen and (max-width: 530px) {
+  .cards{
+    height: 300px;
+    width: 300px;
+  }
+  .card .back-view img{
+    max-width: 35px;
+  }
+  .details{
+    margin-top: 10px;
+    padding: 0 15px;
+    height: calc(100% / 4 - 20px);
+  }
+  .details p{
+    height: 15px;
+    font-size: 17px;
+    padding-right: 13px;
+  }
+  .details button{
+    font-size: 13px;
+    padding: 5px 10px;
+    border: none;
+    color: #fff;
+    background: #8B33D0;
+  }
+}
